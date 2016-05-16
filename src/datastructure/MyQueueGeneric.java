@@ -1,33 +1,33 @@
 package datastructure;
 /**
  *
- * @author Carlos Dhyego
+ * @author Carlos Dhyego 
  * @author Mikael
  * @author Walter
  * 
+ * @param <T>
  */
-public class MyQueue {
-    
-    private int[] queue;
+public class MyQueueGeneric <T> {
+    private T[] queue;
     private int front =  0,
 		back  =  0,
 		size;
 	
     /**
 	 * Constructs an empty queue with an initial capacity of ten.
-     */
-    public MyQueue() {
+    */
+    public MyQueueGeneric () {
 	this.size = 10;
-	this.queue = new int[size];
+	this.queue = (T[])new Object[size];
     }
 	
     /**
 	 * Constructs an empty queue with the specified initial capacity.
 	 * @param size
      */
-    public MyQueue(int size) {
+    public MyQueueGeneric (int size) {
 	this.size = size;
-	this.queue = new int[size];
+	this.queue = (T[])new Object[size];
     }
 
     /**
@@ -39,11 +39,11 @@ public class MyQueue {
     }
 
     /**
-         * Returns true if the queue is full.
+	 * Returns true if the queue is full.
 	 * @return
      */
     public boolean isFull () {
-	return front == size -1;
+	return front == size - 1;
     }
 
     /**
@@ -54,38 +54,38 @@ public class MyQueue {
 	return front - back;
     }
 
-    /**
+	/**
 	 * Returns the element that is the end of the queue.
-	 * If the referenced element does not exist -1 is returned.
+	 * If the referenced element does not exist null is returned.
 	 * @return
-     */
-    public int front () {
-        try {
-            return queue[front-1];
-        } catch (ArrayIndexOutOfBoundsException e) {
-            return -1;
-        }
-    }
-
-    /**
-	 * Returns the object that is the beginning of the queue
-	 * If the referenced element does not exist -1 is returned.
-	 * @return
-     */
-	 
-    public int back () {
+	 */
+    public T front () {
 	try {
-		return queue[back];
+		return queue[front-1];
 	} catch (ArrayIndexOutOfBoundsException e) {
-		return -1;
+		return null;
 	}
     }
 
     /**
-	 * Adds an element in the end of the queue.
+	 * Returns the object that is the beginning of the queue
+	 * If the referenced element does not exist null is returned.
+	 * @return
+     */
+	 
+    public T back () {
+	try {
+		return queue[back];
+	} catch (ArrayIndexOutOfBoundsException e) {
+		return null;
+	}
+    }
+
+    /**
+	 * Adds an element in the queue.
 	 * @param element
      */
-    public void enqueue (int element) {	
+    public void push (T element) {	
 	if (isFull()) {
 		System.out.println("Error: queue overflow");
 	} else {
@@ -93,17 +93,16 @@ public class MyQueue {
 	}
     }
 
-    /**
-	 *  Removes an element in the queue and return the first element.
-         *  In case of error return -1.
+	/**
+	 *  Removes an element in the queue.
 	 * @return
-     */
-    public int dequeue() {
+	 */
+    public T pop () {
 	if (isEmpty()) {
 		System.out.println("Error: queue underflow");
-		return -1;
+		return null;
 	} else {
-		int item = queue[back++];
+		T item = queue[back++];
 		return item;
 	}
     }
@@ -111,11 +110,10 @@ public class MyQueue {
     /**
 	 * Removes all elements from the queue.
      */
-	
     public void clear () {
 	if (!isEmpty()) {
 		for (int i = 0; i < front; i++) {
-			queue[i] = -1;
+			queue[i] = null;
 		}
 	}
         back = 0;
@@ -131,5 +129,5 @@ public class MyQueue {
 			System.out.print(queue[i] + " ");
 		}
 	}
-    }    
+    }
 }
