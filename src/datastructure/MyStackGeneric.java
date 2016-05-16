@@ -88,7 +88,7 @@ public class MyStackGeneric <T> {
 
     /**
 	 * Removes all objects from the stack.
-	 */
+     */
     public void clear () {
 	if (!isEmpty()) {
 		for (int i = 0; i <= position; i++) {
