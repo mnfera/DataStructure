@@ -12,24 +12,25 @@ public class MyQueueGenericTest {
         MyQueueGeneric<Integer> queue = new MyQueueGeneric<>();
 		
 	System.out.println(queue.isEmpty());
-	queue.push(2);
-	queue.push(2);
-	queue.push(2);
+	queue.enqueue(1);
+	queue.enqueue(2);
+	queue.enqueue(3);
 	System.out.println(queue.isFull());
-	queue.pop();
-	queue.pop();
-	queue.pop();
-	queue.pop();
-
-	queue.push(2);
-	queue.push(2);
-	queue.push(2);
-
+        System.out.println("Dequeue: " + queue.dequeue());
+        System.out.println("Dequeue: " + queue.dequeue());
+        System.out.println("Dequeue: " + queue.dequeue());
+        System.out.println("Dequeue: " + queue.dequeue());
+	
+	queue.enqueue(4);
+	queue.enqueue(5);
+	queue.enqueue(6);
+	
 	System.out.println(queue.size());
 	System.out.println(queue.front());
 	System.out.println(queue.back());
-	
+		
 	queue.print();
 	queue.clear();
+        queue.print();
     }    
 }

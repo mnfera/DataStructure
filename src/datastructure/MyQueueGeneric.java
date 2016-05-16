@@ -85,7 +85,7 @@ public class MyQueueGeneric <T> {
 	 * Adds an element in the queue.
 	 * @param element
      */
-    public void push (T element) {	
+    public void enqueue (T element) {	
 	if (isFull()) {
 		System.out.println("Error: queue overflow");
 	} else {
@@ -97,7 +97,7 @@ public class MyQueueGeneric <T> {
 	 *  Removes an element in the queue.
 	 * @return
 	 */
-    public T pop () {
+    public T dequeue () {
 	if (isEmpty()) {
 		System.out.println("Error: queue underflow");
 		return null;
