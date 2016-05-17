@@ -1,42 +1,44 @@
 package datastructure;
 /**
  *
- * @author Carlos Dhyego
+ * @author Carlos Dhyego 
  * @author Mikael
  * @author Walter
+ * 
+ * @param <T>
  */
-public class MyStack {
-    private int[] stack;
+public class MyStack <T> {
+    private T[] stack;
     private int position = -1;
     private int size;
-    
+
     /**
-        * Constructs an empty stack with an initial capacity of ten.
-    */
-    public MyStack() {
+	 * Constructs an empty stack with an initial capacity of ten.
+     */
+    public MyStack () {
 	this.size = 10;
-	this.stack = new int[size];
+	this.stack = (T[])new Object[size];
     }
 
     /**
-        * Constructs an empty stack with the specified initial capacity.
-        * @param size
-    */
+	 * Constructs an empty stack with the specified initial capacity.
+	 * @param size
+     */
     public MyStack(int size) {
-	this.stack = new int[size];
-        this.size = size;
+	this.stack = (T[])new Object[size];
+	this.size = size;
     }
-    
+
     /**
-         * Returns true if the stack contains no elements.
+	 * Returns true if the stack contains no elements.
 	 * @return
      */
     public boolean isEmpty () {
 	return position == -1;
     }
-    
+
     /**
-         * Returns true if the stack is full.
+	 * Returns true if the stack is full.
 	 * @return
      */
     public boolean isFull () {
@@ -54,46 +56,46 @@ public class MyStack {
         }
         return 0;
     }
-    
+
     /**
 	 * Returns the object that is on top of the stack.
 	 * @return
      */
-    public int top () {
+    public T top () {
 	return stack[position];
     }
-    
+
     /**
-	 * 
-	 * Adds an object on top of the stack. 
+	 *
+	 * Adds an object on top of the stack.
 	 * If the stack is full you will receive an error message: stack overflow.
 	 * @param element
      */
-    public void push (int element) {
+    public void push (T element) {
 	try {
 		stack[++position] = element;
-	} catch (ArrayIndexOutOfBoundsException e) {
-        	--position;
+        } catch (ArrayIndexOutOfBoundsException e) {
+		--position;
 		System.out.println ("Error: stack overflow");
 	}
     }
-    
+
     /**
-	 * 
-	 * Removes an object from the top of the stack. 
+	 *
+	 * Removes an object from the top of the stack.
 	 * Stack underflow: stack is empty if a message is thrown.
-         * Return -1 in case of error.
+         * Return null in case of error.
 	 * @return
      */
-    public int pop () {
+    public T pop () {
 	try{
-		int top = stack[position];
-		--position;
+		T top = stack[position];
+		stack[position--] = null;
 		return top;
 	} catch (ArrayIndexOutOfBoundsException e) {
 		++position;
 		System.out.println("Error: stack underflow");
-		return -1;
+		return null;
 	}
     }
 
@@ -103,10 +105,10 @@ public class MyStack {
     public void clear () {
 	if (!isEmpty()) {
 		for (int i = 0; i <= position; i++) {
-			stack[i] = -1;
+			stack[i] = null;
 		}
 		position = -1;
-	} 
+	}
     }
 
     /**
@@ -118,5 +120,5 @@ public class MyStack {
 			System.out.print (stack[i] + " ");
 		}
 	}
-    }
+    }    
 }

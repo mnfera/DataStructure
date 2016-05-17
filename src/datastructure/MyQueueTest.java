@@ -4,13 +4,13 @@ package datastructure;
  * @author Carlos Dhyego
  * @author Mikael
  * @author Walter
+ * 
  */
 public class MyQueueTest {
-    
+
     public static void main(String[] args) {
+        MyQueue<Integer> queue = new MyQueue<>();
 		
-	MyQueue queue = new MyQueue();
-	
 	System.out.println(queue.isEmpty());
 	queue.enqueue(1);
 	queue.enqueue(2);
